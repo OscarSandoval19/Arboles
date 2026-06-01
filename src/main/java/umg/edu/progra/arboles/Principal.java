@@ -1,0 +1,114 @@
+package umg.edu.progra.arboles;
+
+/**
+ * Clase principal que demuestra el uso del Arbol Binario de Busqueda (BST)
+ * implementado manualmente, sin usar librerias como java.util.
+ *
+ * Ejecucion sugerida:
+ *   1. mvn compile
+ *   2. mvn exec:java -Dexec.mainClass="umg.edu.progra.arboles.Principal"
+ *
+ * @author Walter Cordova
+ */
+public class Principal {
+
+    public static void main(String[] args) {
+
+        ArbolBinarioBusqueda arbol = new ArbolBinarioBusqueda();
+        int[] valores = { 50, 30, 70, 20, 40, 60, 80, 10 };
+        for (int v : valores) {
+            arbol.insertar(v);
+        }
+
+        System.out.println("===== Arbol Binario de Busqueda =====");
+        System.out.println("Tamanio: " + arbol.tamanio());
+        System.out.println("Altura:  " + arbol.altura());
+        System.out.println("Minimo:  " + arbol.minimo());
+        System.out.println("Maximo:  " + arbol.maximo());
+        System.out.println("Hojas:   " + arbol.contarHojas());
+
+        System.out.println("\n--- Representacion visual (rotada 90 grados) ---");
+        arbol.imprimirArbol();
+
+        System.out.println("\n--- Recorridos ---");
+        System.out.print("InOrden    (ascendente): ");
+        arbol.inOrden();
+
+        System.out.print("PreOrden   (raiz primero): ");
+        arbol.preOrden();
+
+        System.out.print("PostOrden  (raiz al final): ");
+        arbol.postOrden();
+
+        System.out.print("Por niveles (BFS):         ");
+        arbol.recorridoPorNiveles();
+
+        System.out.println("\n--- Busquedas ---");
+        System.out.println("Contiene 40? " + arbol.contiene(40));
+        System.out.println("Contiene 99? " + arbol.contiene(99));
+
+        System.out.println("\n--- Eliminacion ---");
+        System.out.println("Eliminando 20 (nodo con 1 hijo)...");
+        arbol.eliminar(20);
+        System.out.print("InOrden tras eliminar 20: ");
+        arbol.inOrden();
+
+        System.out.println("Eliminando 30 (nodo con 2 hijos)...");
+        arbol.eliminar(30);
+        System.out.print("InOrden tras eliminar 30: ");
+        arbol.inOrden();
+
+        System.out.println("Eliminando 50 (raiz)...");
+        arbol.eliminar(50);
+        System.out.print("InOrden tras eliminar la raiz: ");
+        arbol.inOrden();
+
+        System.out.println("\n--- Estado final ---");
+        arbol.imprimirArbol();
+        System.out.println("Tamanio final: " + arbol.tamanio());
+        System.out.println("Altura final:  " + arbol.altura());
+
+        ArbolBinarioBusqueda arbol2 = new ArbolBinarioBusqueda();
+        int[] valoresP1 = { 50, 30, 70, 20, 40, 60, 80, 10 };
+        for (int v : valoresP1) {
+            arbol2.insertar(v);
+        }
+
+        System.out.println("\n===== Problema 1: contarNodos() recursivo =====");
+
+        int contado = arbol2.contarNodos();
+        int tamAntes = arbol2.tamanio();
+        System.out.println("Arbol inicial (8 nodos):");
+        System.out.println("  contarNodos() = " + contado);
+        System.out.println("  tamanio()     = " + tamAntes);
+        System.out.println("  Coinciden?    " + (contado == tamAntes));
+
+        arbol2.insertar(25);
+        contado = arbol2.contarNodos();
+        int tamDespuesInsertar = arbol2.tamanio();
+        System.out.println("\nTras insertar 25 (9 nodos):");
+        System.out.println("  contarNodos() = " + contado);
+        System.out.println("  tamanio()     = " + tamDespuesInsertar);
+        System.out.println("  Coinciden?    " + (contado == tamDespuesInsertar));
+
+        arbol2.eliminar(25);
+        contado = arbol2.contarNodos();
+        int tamDespuesEliminar = arbol2.tamanio();
+        System.out.println("\nTras eliminar 25 (8 nodos):");
+        System.out.println("  contarNodos() = " + contado);
+        System.out.println("  tamanio()     = " + tamDespuesEliminar);
+        System.out.println("  Coinciden?    " + (contado == tamDespuesEliminar));
+
+        ArbolBinarioBusqueda arbolVacio = new ArbolBinarioBusqueda();
+        System.out.println("\nArbol vacio:");
+        System.out.println("  contarNodos() = " + arbolVacio.contarNodos());
+        System.out.println("  tamanio()     = " + arbolVacio.tamanio());
+
+
+        ArbolBinarioBusqueda arbolUnNodo = new ArbolBinarioBusqueda();
+        arbolUnNodo.insertar(42);
+        System.out.println("\nArbol de un solo nodo (42):");
+        System.out.println("  contarNodos() = " + arbolUnNodo.contarNodos());
+        System.out.println("  tamanio()     = " + arbolUnNodo.tamanio());
+    }
+}
