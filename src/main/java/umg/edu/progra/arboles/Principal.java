@@ -144,7 +144,23 @@ public class Principal {
         System.out.println("\nEstructura del árbol alterado artificialmente:");
         arbolRoto.imprimirArbol();
         System.out.println("¿El árbol alterado es un BST válido?: " + arbolRoto.esBSTValido()); // Debe ser false
+        
+     // Problema 4 — Ancestro común más bajo (LCA)
+        System.out.println("\n===== Problema 4: ancestroComunMasBajo() =====");
+        System.out.println("Estructura del árbol 2 para referencia de LCA:");
+        arbol2.imprimirArbol();
+
+        System.out.println("LCA de 10 y 40 (Debe ser 30): " + arbol2.ancestroComunMasBajo(10, 40));
+        System.out.println("LCA de 10 y 80 (Debe ser 50): " + arbol2.ancestroComunMasBajo(10, 80));
+        System.out.println("LCA de 60 y 80 (Debe ser 70): " + arbol2.ancestroComunMasBajo(60, 80));
+
+        try {
+            System.out.print("Intentando buscar LCA con un nodo inexistente (99)... ");
+            arbol2.ancestroComunMasBajo(10, 99);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\nExcepción cachada con éxito: " + e.getMessage());
     }
     
+   }
 }
 

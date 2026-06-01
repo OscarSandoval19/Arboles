@@ -348,4 +348,30 @@ public class ArbolBinarioBusqueda {
         return esBSTValidoRecursivo(nodo.izquierdo, min, nodo.leerDato()) 
             && esBSTValidoRecursivo(nodo.derecho, nodo.leerDato(), max);
     }
+   // Problema 4: Encuentra el ancestro comun mas bajo (LCA) de dos valores.
+    
+   public int ancestroComunMasBajo(int a, int b) {
+       if (!contiene(a) || !contiene(b)) {
+           throw new IllegalArgumentException("Uno o ambos valores no existen en el arbol.");
+       }
+       
+       Nodo lcaNodo = encontrarLCARecursivo(raiz, a, b);
+       return lcaNodo.leerDato();
+   }
+
+   private Nodo encontrarLCARecursivo(Nodo actual, int a, int b) {
+       if (actual == null) {
+           return null;
+       }
+
+       if (a < actual.leerDato() && b < actual.leerDato()) {
+           return encontrarLCARecursivo(actual.izquierdo, a, b);
+       }
+
+       if (a > actual.leerDato() && b > actual.leerDato()) {
+           return encontrarLCARecursivo(actual.derecho, a, b);
+       }
+
+       return actual;
+   }
 }
