@@ -374,4 +374,22 @@ public class ArbolBinarioBusqueda {
 
        return actual;
    }
+   
+    // Problema 5: Invierte el arbol completo (efecto espejo).
+   public void invertir() {
+       invertirRecursivo(raiz);
+   }
+
+   private void invertirRecursivo(Nodo nodo) {
+       if (nodo == null) {
+           return;
+       }
+
+       Nodo temporal = nodo.izquierdo;
+       nodo.izquierdo = nodo.derecho;
+       nodo.derecho = temporal;
+
+       invertirRecursivo(nodo.izquierdo);
+       invertirRecursivo(nodo.derecho);
+   }
 }

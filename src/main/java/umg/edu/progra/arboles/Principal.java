@@ -161,6 +161,28 @@ public class Principal {
             System.out.println("\nExcepción cachada con éxito: " + e.getMessage());
     }
     
+     // Problema 5 — Espejo del árbol (inversión)
+        System.out.println("\n===== Problema 5: invertir() =====");
+        
+        ArbolBinarioBusqueda arbolEspejo = new ArbolBinarioBusqueda();
+        int[] valoresEspejo = { 50, 30, 70, 20, 40, 60, 80 };
+        for (int v : valoresEspejo) {
+            arbolEspejo.insertar(v);
+        }
+
+        System.out.println("--- ANTES de invertir ---");
+        System.out.print("Recorrido InOrden: ");
+        arbolEspejo.inOrden(); //Debe salir ordenado ascendentemente
+        System.out.println("Estructura visual:");
+        arbolEspejo.imprimirArbol();
+
+        arbolEspejo.invertir();
+
+        System.out.println("\n--- DESPUÉS de invertir ---");
+        System.out.print("Recorrido InOrden: ");
+        arbolEspejo.inOrden(); //Debe salir al revés (descendente)
+        System.out.println("Estructura visual invertida:");
+        arbolEspejo.imprimirArbol();
    }
 }
 
