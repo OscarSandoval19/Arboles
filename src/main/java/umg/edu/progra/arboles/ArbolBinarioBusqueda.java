@@ -308,4 +308,28 @@ public class ArbolBinarioBusqueda {
             return valor;
         }
     }
+    public boolean esBalanceado() {
+        return esBalanceadoRecursivo(raiz);
+    }
+// Problema 2: Determina si el arbol esta balanceado.
+    private boolean esBalanceadoRecursivo(Nodo nodo) {
+        if (nodo == null) {
+            return true;
+        }
+
+        int alturaIzq = alturaRecursiva(nodo.izquierdo);
+        int alturaDer = alturaRecursiva(nodo.derecho);
+
+        int diferencia = alturaIzq - alturaDer;
+        if (diferencia < 0) {
+            diferencia = -diferencia;
+        }
+
+
+        if (diferencia <= 1 && esBalanceadoRecursivo(nodo.izquierdo) && esBalanceadoRecursivo(nodo.derecho)) {
+            return true;
+        }
+
+        return false;
+    }
 }

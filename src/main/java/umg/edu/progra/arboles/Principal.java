@@ -110,5 +110,24 @@ public class Principal {
         System.out.println("\nArbol de un solo nodo (42):");
         System.out.println("  contarNodos() = " + arbolUnNodo.contarNodos());
         System.out.println("  tamanio()     = " + arbolUnNodo.tamanio());
+
+        System.out.println("\n===== Problema 2: esBalanceado() =====");
+        System.out.println("¿El arbol principal esta balanceado? " + arbol.esBalanceado()); // Deberia ser true o false segun las eliminaciones previas
+
+        System.out.println("¿El arbol2 (valores iniciales) esta balanceado? " + arbol2.esBalanceado());
+
+   
+        ArbolBinarioBusqueda arbolDesbalanceado = new ArbolBinarioBusqueda();
+        arbolDesbalanceado.insertar(1);
+        arbolDesbalanceado.insertar(2);
+        arbolDesbalanceado.insertar(3);
+        arbolDesbalanceado.insertar(4);
+        arbolDesbalanceado.insertar(5);
+
+        System.out.println("\nArbol lineal desbalanceado (1 -> 2 -> 3 -> 4 -> 5):");
+        arbolDesbalanceado.imprimirArbol();
+        System.out.println("¿Esta balanceado? " + arbolDesbalanceado.esBalanceado()); // Debe ser false
     }
+    
 }
+
