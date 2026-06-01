@@ -332,4 +332,20 @@ public class ArbolBinarioBusqueda {
 
         return false;
     }
+    // Problema 3: Verifica si el arbol cumple con las propiedades de un BST valido
+    public boolean esBSTValido() {
+        return esBSTValidoRecursivo(raiz, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private boolean esBSTValidoRecursivo(Nodo nodo, int min, int max) {
+        if (nodo == null) {
+            return true;
+        }
+        if (nodo.leerDato() <= min || nodo.leerDato() >= max) {
+            return false;
+        }
+        
+        return esBSTValidoRecursivo(nodo.izquierdo, min, nodo.leerDato()) 
+            && esBSTValidoRecursivo(nodo.derecho, nodo.leerDato(), max);
+    }
 }

@@ -127,6 +127,23 @@ public class Principal {
         System.out.println("\nArbol lineal desbalanceado (1 -> 2 -> 3 -> 4 -> 5):");
         arbolDesbalanceado.imprimirArbol();
         System.out.println("¿Esta balanceado? " + arbolDesbalanceado.esBalanceado()); // Debe ser false
+        
+     // Problema 3 — Validar que sea un BST
+        System.out.println("\n===== Problema 3: esBSTValido() =====");
+        
+        System.out.println("¿El árbol 2 es un BST válido?: " + arbol2.esBSTValido()); // Debe ser true
+
+        ArbolBinarioBusqueda arbolRoto = new ArbolBinarioBusqueda();
+        arbolRoto.insertar(50); 
+
+        Nodo nodoIzquierdoInvalido = new Nodo(60); 
+        Nodo nodoDerechoValido = new Nodo(70);
+        arbolRoto.getRaiz().izquierdo = nodoIzquierdoInvalido;
+        arbolRoto.getRaiz().derecho = nodoDerechoValido;
+
+        System.out.println("\nEstructura del árbol alterado artificialmente:");
+        arbolRoto.imprimirArbol();
+        System.out.println("¿El árbol alterado es un BST válido?: " + arbolRoto.esBSTValido()); // Debe ser false
     }
     
 }
